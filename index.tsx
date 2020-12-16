@@ -7,7 +7,11 @@ const App: Component = () => {
     timer = setInterval(() => setState("count", (c) => c + 1), 1000);
   onCleanup(() => clearInterval(timer));
 
+  // The @jsxImportSource comment is needed for this JSX expression to recognize the <div> intrinsic element.
   return <div>{state.count}</div>;
 };
 
 render(() => <App />, document.getElementById("app"));
+
+// The `import {JSX} from "solid-js"` is  needed in order to use the JSX types in non-JSX expressions
+interface Foo extends JSX.HTMLAttributes<HTMLDivElement> {}
